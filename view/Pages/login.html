@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../styles/styleLogin.css">
+</head>
+<body>
+    <!-- Login -->
+    <div class="wrapper" id="loginWrapper">
+        <form action="#" id="loginForm">
+            <h1>Login</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Username" required id="userNameInput"> 
+                <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="input-box">
+                <input type="password" placeholder="Password" required id="passwordInput">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#">Forgot password?</a>
+            </div>
+
+            <button type="submit" class = "btnLogin">Login</button>
+
+            <div class="register-link">
+                <p>Don't have an account?<a href="#" id="registerLink"> Register</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Register -->
+    <div class="form-register" id="registerWrapper" style="display: none;">
+        <form action="" id="registerForm">
+            <h1>Registration</h1>
+            <div class="input-box">
+                <input type="text" placeholder="Email" required> 
+                <ion-icon name="mail-outline"></ion-icon>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Username" required> 
+                <ion-icon name="person-outline"></ion-icon>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Password" required>
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </div>
+
+            <div class="remember-forgot">
+                <label><input type="checkbox"> I agree to the terms & conditions</label>
+            </div>
+
+            <button type="submit" class = "btnLogin">Register</button>
+
+            <div class="register-link">
+                <p>Already have an account?<a href="#" id="loginLink"> Login</a></p>
+            </div>
+        </form>
+    </div>
+
+    <!-- Hình ảnh làm background -->
+    <div class="background">
+        <!-- Thẻ canvas cho biểu đồ -->
+        <canvas id="bubbleChart" width="800" height="400"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../../model/app.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        // Lấy các phần tử cần thao tác
+        const loginWrapper = document.getElementById('loginWrapper');
+        const registerWrapper = document.getElementById('registerWrapper');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+
+        // Hàm chuyển đổi đăng nhập và đăng ký
+        function switchForm(targetForm, hideForm) {
+            targetForm.style.display = 'block';
+            hideForm.style.display = 'none';
+        }
+
+        // Sự kiện click chuyển từ đăng nhập sang đăng ký
+        registerLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            switchForm(registerWrapper, loginWrapper);
+        });
+
+        // Sự kiện click chuyển từ đăng ký sang đăng nhập
+        loginLink.addEventListener('click', function (event) {
+            event.preventDefault();
+            switchForm(loginWrapper, registerWrapper);
+        });
+    </script>
+
+<script>
+    // Bắt sự kiện submit form
+    $('#loginForm').submit(function(event) {
+        event.preventDefault(); // Ngăn chặn sự kiện mặc định của form
+        const username = $('#userNameInput').val();
+        const password = $('#passwordInput').val();
+    // Gửi yêu cầu đăng nhập đến máy chủ
+        $.ajax({
+            url: '/login',
+            type: 'POST',
+            data: {
+            username: username,
+            password: password
+            },
+            success: function(response) {
+            // Xử lý phản hồi từ máy chủ sau khi đăng nhập thành công
+            // Chuyển hướng đến trang chính
+            if (response.success) {
+                console.log("Login successful");
+                window.location.href = 'index.html';
+            } else {
+                alert(response.message);
+            }
+            },
+            error: function() {
+            console.log("Login fail");
+            // Xử lý khi xảy ra lỗi trong quá trình đăng nhập
+            alert('Đăng nhập không thành công. Vui lòng kiểm tra lại thông tin đăng nhập.');
+            }
+        });
+    });
+  </script>
+</body>
+</html>

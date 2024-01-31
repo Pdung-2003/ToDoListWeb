@@ -1,0 +1,97 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <title>Simple To Do List with Calendar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="navigation-container">
+            <ul class="navigation">
+                <li>
+                    <a href="Infor.html">
+                        <span class="icon"><ion-icon name="information-circle-outline"></ion-icon></span>
+                        <span class="title">Thông tin</span>
+                    </a>
+                </li>                
+                <li>
+                    <a href="HowToUse.html">
+                        <span class="icon"><ion-icon name="book-outline"></ion-icon></span>
+                        <span class="title">Hướng dẫn sử dụng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <span class="icon"><ion-icon name="list-outline"></ion-icon></span>
+                        <span class="title">Todolist</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Suggest.html">
+                        <span class="icon"><ion-icon name="bulb-outline"></ion-icon></span>
+                        <span class="title">Gợi ý</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html" id="logout">
+                        <span class="icon"><ion-icon name="bulb-outline"></ion-icon></span>
+                        <span class="title">Đăng xuất</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <div class ="main-content">
+        
+        <div class="container">
+            <div class="search-task">
+                <input type="text" id="searchInput" placeholder="Search tasks...">
+                <button id="searchButton">Search</button>
+            </div>
+            <div id="newtask">
+                <input type="text" id="taskInput" placeholder="Task to be done..">
+                <input type="time" id="timeInput"> 
+                <button id="add">Add</button>
+            </div>
+            <div id="tasks"></div>
+        </div>
+        
+        <div class="calendar-container">
+            <div class="calendar">
+                <div class="calendar-header">
+                    <button class="prev-month" onclick="changeMonth(-1)">&#10094;</button>
+                    <span class="month-year" id="monthYear"></span>
+                    <button class="next-month" onclick="changeMonth(1)">&#10095;</button>
+                </div>
+                <div class="calendar-body">
+                    <div class="day-of-week">CN</div>
+                    <div class="day-of-week">T2</div>
+                    <div class="day-of-week">T3</div>
+                    <div class="day-of-week">T4</div>
+                    <div class="day-of-week">T5</div>
+                    <div class="day-of-week">T6</div>
+                    <div class="day-of-week">T7</div>
+                </div>
+            </div>
+            <div class="deleted-tasks-container">
+                <h3>Lịch sử xóa tasks</h3>
+                <table id="deletedTasksTable">
+                    <thead>
+                        <tr>
+                            <th>Tên Task</th>
+                            <th>Create At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Các hàng bảng sẽ được thêm vào đây từ JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="../../model/function.js"></script>
+</body>
+</html>

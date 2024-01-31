@@ -1,0 +1,403 @@
+/* Reset padding và margin mặc định cho tất cả các phần tử và đặt box-sizing để kích thước của phần tử tính cả padding và border */
+*,
+*:before,
+*:after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} 
+
+/* Thiết lập nền và font chữ cho toàn trang */
+body {
+    min-height: 100vh; /* Chiều cao tối thiểu bằng với chiều cao viewport */
+    background: linear-gradient(135deg, #8052ec, #d161ff); /* Gradient nền từ màu tím sang hồng */
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column; /* Sắp xếp phần tử theo chiều dọc */
+    align-items: center; /* căn giữa*/
+}
+
+/* Định dạng header, bao gồm màu nền, padding và box shadow */
+.header {
+    width: 100%; /* chiều rộng bằng với viewport */
+    background-color: #ff4d4d;
+    padding: 10px 20px; /* Padding trên dưới 10px, trái phải 20px */
+    padding-right: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Bóng dưới header */
+    display: flex; /* Sử dụng flexbox */
+    justify-content: flex-end; /* Đặt nội dung ở cuối bên phải */
+    align-items: center; /* Căn giữa */
+}
+
+/* Định dạng cho navigation */
+.navigation {
+    list-style: none; /* Loại bỏ dấu chấm danh sách */
+    margin-right: 0; /* Loại bỏ khoảng cách bên phải */
+    padding: 0;
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa các mục */
+}
+
+/* Định dạng cho từng liên kết trong navigation */
+.navigation li {
+    display: inline-block; /* Hiển thị liên kết dạng inline-block */ 
+    margin: 0 10px;
+}
+
+.navigation li a {
+    color: white;
+    text-decoration: none; /* Không gạch dưới liên kết */
+    font-size: 1rem;
+}
+
+/* Hiệu ứng khi hover vào liên kết */
+.navigation li a:hover {
+    background-color: #e63946; /* Màu nền khi hover */
+    border-radius: 5px; /* bo góc tròn*/
+    padding: 5px 10px; /* Thêm padding để tăng kích thước nền khi hover */
+}
+
+
+/* Định dạng cho nội dung chính, sử dụng flexbox để bố trí */
+.main-content {
+    display: flex; /* Use flexbox to layout children side by side */
+    width: 100%; 
+    max-width: 1200px; /* Limit the width to avoid stretching too much */
+    justify-content: space-between; /* khoảng cách đều giữa các phần tử */
+    padding: 20px; 
+    box-sizing: border-box; /* kích thước bao gồm padding và border*/
+    align-items: flex-start; /* Căn đều các phần tử theo chiều dọc từ trên xuống */
+}
+
+
+/* Định dạng cho container chứa nội dung chính */
+.container {
+    flex: 1; /* chiếm phần kgian còn lại*/
+    margin-right: 20px;
+    width: calc(100% - 350px - 40px); /* tính toán chiều rộng dựa trên các phần tử khác */
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3); /* bóng đổ */
+    overflow-y: auto; /* Allow scrolling for tasks */
+}
+
+/* Định dạng cho phần tìm kiếm task */
+.search-task {
+    margin-bottom: 20px; /* Thêm một khoảng cách trước div newtask */
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa input và button */
+}
+
+.search-task input[type="text"] {
+    flex-grow: 1; /* Cho input chiếm đủ không gian( chiếm phần không gian còn lại) */
+    height: 45px;
+    border: 2px solid #d1d3d4; /* viền màu xám nhạt */
+    border-radius: 5px;
+    padding: 0 12px;
+}
+
+.search-task button {
+    width: 100px; /* Chiều rộng cố định cho button */
+    height: 45px;
+    background-color: #8052ec;
+    border: none; /* k viền */
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer; /* con trò dạng pointer */
+}
+
+/* Định dạng cho phần nhập task mới */
+#newtask {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    display: flex;
+    gap: 10px; /* Space between input and button */
+    margin-bottom: 40px; /* Space between new task input and task list */
+}
+
+/* Định dạng cho các trường nhập và nút trong phần newtask */
+#newtask input[type="text"],
+#newtask input[type="time"],
+#newtask button {
+    height: 45px;
+    border-radius: 5px;
+}
+/* Định dạng cho các trường nhập task */
+#newtask input[type="text"] {
+    flex-grow: 1; /* Take up available space */
+    border: 2px solid #d1d3d4;
+    padding: 0 12px;
+}
+
+/* Định dạng cho trường chọn thời gian */
+#newtask input[type="time"] {
+    border: 2px solid #d1d3d4;
+}
+
+/* Định dạng cho nút thêm task */
+#newtask button {
+    width: 100px; /* Fixed width for the button */
+    background-color: #8052ec;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+/* Định dạng cho các task hiển thị */
+.task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-top: 10px;
+    border-bottom: 2px solid #d1d3d4;
+}
+
+/* Định dạng cho task đã hoàn thành */
+.task.completed {
+    text-decoration: line-through; /* Gạch ngang task */
+}
+
+.task span {
+    font-size: 15px; /* kích thước chữ của task */
+}
+
+/* Định dạng cho nút trong task */
+.task button {
+    background-color: #8052ec;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+/* Định dạng lịch (calendar) */
+.calendar {
+    flex: none; /* Prevent the calendar from growing with the content */
+    width: 300px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Đệm xung quanh lịch */
+    display: flex;
+    flex-direction: column; /* Stack calendar elements vertically */
+}
+
+/* Phần header và body của lịch */
+.calendar-header,
+.calendar-body {
+    padding: 10px;
+}
+
+/* Header của lịch */
+.calendar-header {
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px solid #e6e6e6;
+    text-align: center;
+}
+
+.calendar-body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 cột với kích thước bằng nhau */
+    text-align: center;
+}
+/* Định dạng cho tên các ngày trong tuần */
+.day-of-week {
+    background: #e6e6e6;
+    color: black;
+}
+/* Định dạng cho từng ngày */
+.day {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Hiệu ứng khi hover và chọn ngày */
+.day:hover,
+.selected-day {
+    background-color: #e6e6e6;
+    color: black;
+}
+/* Định dạng cho ngày hiện tại */
+.current-day {
+    background-color: #ff6666;
+    color: white;
+}
+
+/* Định dạng cho nút chuyển tháng */
+.prev-month, .next-month {
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+/* Hiệu ứng khi hover vào nút chuyển tháng */
+.prev-month:hover, .next-month:hover {
+    background-color: #e6e6e6;
+    color: black;
+}
+
+/* Định dạng cho ngày được chọn */
+.selected-day {
+    background-color: #d161ff;
+    color: white;
+}
+/* Định dạng container chứa navigation */
+.navigation-container {
+    max-width: 1200px; 
+    width: 100%; 
+    display: flex;
+    justify-content: flex-end; 
+    margin-right: 20px; 
+}
+/* style cho bảng task đã xóa */
+.deleted-tasks-container {
+    width: 300px; 
+    max-height: 500px; 
+    overflow-y: auto; /* Cho phép cuộn dọc nếu nội dung quá dài */
+    background-color: white; 
+    margin-top: 20px; 
+    padding: 10px; 
+    border-radius: 5px; 
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); 
+}
+
+/* Định dạng cho bảng hiển thị các task đã xóa */
+#deletedTasksTable {
+    width: 100%; 
+    border-collapse: collapse; /* Gộp các đường viền lại với nhau */
+}
+
+/* Định dạng cho tiêu đề của bảng */
+#deletedTasksTable thead th {
+    background-color: #eee; 
+    border: 1px solid #ddd; /* Đường viền màu xám nhạt */
+}
+
+/* Định dạng cho các ô dữ liệu trong bảng */
+#deletedTasksTable tbody td {
+    border: 1px solid #ddd; 
+    padding: 5px 10px; /* Đệm bên trong ô dữ liệu */
+}
+
+/* Định dạng cho container chứa lịch và bảng task đã xóa */
+.calendar-container {
+    display: flex;
+    flex-direction: column;  /* Sắp xếp lịch và bảng theo chiều dọc */
+    align-items: center; 
+    margin-top: 20px;
+}
+
+/* Styles dành cho ThongTin.html */
+.content-introduction,
+.content-comparison,
+.content-advantages {
+    background-color: #ffffff; /* Nền trắng cho nội dung */
+    margin: 20px; /* Khoảng cách xung quanh */
+    padding: 20px; /* Đệm bên trong */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng đổ */
+    max-width: 800px; /* Chiều rộng tối đa */
+    width: 100%; /* Chiều rộng đầy đủ */
+}
+
+/* Định dạng cho tiêu đề h1 trong section introduction */
+.content-introduction h1, 
+.content-comparison h2, 
+.content-advantages h2 {
+    font-size: 1.5em; /* Điều chỉnh kích thước phông chữ của các tiêu đề */
+    margin: 10px 0; /* Điều chỉnh khoảng cách trên và dưới tiêu đề */
+}
+
+/* Định dạng tiêu đề chính phía trên cùng của content-wrapper */
+.content-wrapper > h1 {
+    font-size: 2em; /* Làm cho phông chữ lớn hơn */
+    margin-bottom: 0; /* Loại bỏ khoảng cách dưới tiêu đề chính */
+}
+
+/* Định dạng cho các phần nội dung con, bao gồm khoảng cách giữa các phần và định dạng văn bản */
+.content-section {
+    margin-bottom: 20px; /* Khoảng cách giữa các phần */
+}
+.content-section p {
+    margin-bottom: 1em; /* Thêm khoảng cách dưới mỗi đoạn văn */
+}
+
+
+/* Đảm bảo rằng phần nội dung nằm giữa trang */
+.content-wrapper {
+    align-self: center; /* Căn giữa theo chiều ngang */
+    width: 100%; /* Sử dụng toàn bộ chiều rộng */
+    max-width: 800px; /* Đặt chiều rộng tối đa để giữ nội dung không quá rộng */
+}
+
+/* Định dạng cho hình ảnh trong nội dung, đảm bảo hình ảnh không vượt quá kích thước của container */
+.content-img {
+    max-width: 100%; /* Đặt chiều rộng tối đa của hình ảnh là 100% */
+    height: auto; /* Đặt chiều cao tự động để giữ tỷ lệ của hình ảnh */
+    object-fit: cover; /* Điều chỉnh hình ảnh để phủ kín khung chứa mà không bị méo */
+    margin: 0 auto; /* Căn giữa hình ảnh nếu nhỏ hơn khung chứa */
+    border-radius: 10px; /* Bo góc hình ảnh */
+}
+
+/* CSS để tạo bảng trong ThongTin.html */
+.table-container {
+    background: white; /*bao gồm nền trắng và bóng đổ */
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 5px;
+}
+
+/* Định dạng cho bảng, bao gồm cả tiêu đề và nội dung bảng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #dddddd;
+}
+th, td {
+    text-align: left;  /* Căn trái chữ trong th và td */
+    padding: 8px;
+}
+th {
+    background-color: #f2f2f2; /*Màu nền xám nhạt cho tiêu đề */
+}
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Màu nền cho hàng chẵn */
+}
+
+.content-section h2 {
+    font-size: 24px; 
+    color: #333333; 
+    margin-bottom: 16px; /* margin dưới */
+}
+
+.content-section h3 {
+    font-size: 20px; 
+    color: #555555; 
+    margin-top: 20px; 
+    margin-bottom: 8px; 
+}
+
+.content-section p {
+    font-size: 16px; 
+    line-height: 1.6; /* Spacing between lines */
+    margin-bottom: 12px; 
+    color: #666666; /* màu chữ xám nhạt */
+    max-width: 800px;
+}
+/* liên quan đến ảnh (( chú thích ) */
+figcaption {
+    text-align: center; 
+    color: #555; 
+    font-size: 1.2em; 
+    margin-top: 8px; /* Khoảng cách giữa hình ảnh và chú thích */
+}
